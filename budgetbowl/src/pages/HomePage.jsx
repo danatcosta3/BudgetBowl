@@ -1,10 +1,8 @@
 import React from "react";
+import MainHeader from "../components/MainHeader.jsx";
 
 function HomePage() {
-  return <div class="text-3xl">
-
-    HomePage</div>;
-  
+  return <div className="text-2xl">Hello</div>;
 }
 
 export default HomePage;
