@@ -3,17 +3,6 @@ import { Link } from "react-router-dom";
 
 function MainHeader() {
   return (
-<<<<<<< Updated upstream
-    <div className=" w-full h-auto">
-      <Link to="/">
-        <p className="text-black w-full flex flex-row text-4xl p-3">
-          Budget
-          <p className="text-prim-main-dark ">Bowl</p>
-        </p>
-      </Link>
-      <hr />
-    </div>
-=======
     <header className="bg-white shadow-md w-full">
       <div className="flex justify-between items-center p-4 max-w-7xl mx-auto">
         <Link to="/">
@@ -37,7 +26,6 @@ function MainHeader() {
         </div>
       </div>
     </header>
->>>>>>> Stashed changes
   );
 }
 
