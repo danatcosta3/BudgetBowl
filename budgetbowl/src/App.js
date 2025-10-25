@@ -7,12 +7,19 @@ import LikesPage from "./pages/LikesPage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
 import ShelfPage from "./pages/ShelfPage.jsx";
 import UploadPage from "./pages/UploadPage.jsx";
-
+import SignInPage from "./pages/SignInPage.jsx";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/register" element={CreateAccountPage} />
+        <Route path="/signin" element={SignInPage} />
+        <Route path="/like" element={LikesPage} />
+        <Route path="/shelf" element={ShelfPage} />
+        <Route path="/groceries" element={GroceryListPage} />
+        <Route path="/profile" element={ProfilePage} />
+        <Route path="/upload" element={UploadPage} />
       </Routes>
     </BrowserRouter>
   );
