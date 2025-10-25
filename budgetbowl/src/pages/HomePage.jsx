@@ -1,6 +1,5 @@
 import React from "react";
 import MainHeader from "../components/MainHeader.jsx";
-
 function HomePage() {
   return (
     <div className="flex flex-col">
@@ -21,7 +20,11 @@ function HomePage() {
         </div>
         {/* Picture Side */}
         <div className="w-1/3 h-full bg-prim-main-blue flex items-center justify-center">
-          _
+          <img
+            className="max-w-[80%] max-h-[80%] rounded-lg"
+            src="/lasagna.jpg"
+            alt="lasagna"
+          />
         </div>
       </div>
     </div>
