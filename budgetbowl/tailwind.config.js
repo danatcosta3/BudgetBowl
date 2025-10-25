@@ -4,11 +4,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "caribbean-current": "#08605fff",
-        "teal": "#177e89ff",
-        "hookers-green": "#598381ff",
-        "moss-green": "#8e936dff",
-        "olivine": "#a2ad59ff",
+        "prim-main-dark": "#08605fff",
+        "prim-main-blue": "#177e89ff",
+        "prim-main-squirt": "#598381ff",
+        "prim-main-sand": "#8e936dff",
+        "prim-main-olive": "#a2ad59ff",
       },
     },
   },
