@@ -14,7 +14,7 @@ function MainHeader() {
         <div className="flex gap-4 ml-auto">
           <Link to="/login">
             <button className="text-prim-main-dark px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">
-              Login
+              Log In
             </button>
           </Link>
 
