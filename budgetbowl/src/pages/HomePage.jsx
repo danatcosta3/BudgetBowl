@@ -5,7 +5,6 @@ function HomePage() {
   return (
     <div className="flex flex-row bg-white">
       <MainHeader />
-      <hr />
       {/* Left Side */}
       <div></div>
       {/* Picture Side */}
