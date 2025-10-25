@@ -1,7 +1,10 @@
 import React from "react";
 
 function HomePage() {
-  return <div>HomePage</div>;
+  return <div class="text-3xl">
+
+    HomePage</div>;
+  
 }
 
 export default HomePage;
