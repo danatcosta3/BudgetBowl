@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={CreateAccountPage} />
-        <Route path="/signin" element={SignInPage} />
+        <Route path="/login" element={SignInPage} />
         <Route path="/like" element={LikesPage} />
         <Route path="/shelf" element={ShelfPage} />
         <Route path="/groceries" element={GroceryListPage} />
