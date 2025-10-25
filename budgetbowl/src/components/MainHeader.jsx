@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom'
 
 function MainHeader() {
   return (
-   <div className='bg-blue-300, w-full, h-10'>
+   <div className='bg-blue-600 w-full h-auto'>
     <Link to="/">
-    <p className='text-black w-full'>Budget<p className='text-prim-main-dark' w-full>Bowl</p></p>
+    <p className='text-black w-full flex flex-row text-4xl p-3'>Budget
+    <p className='text-prim-main-dark '>Bowl</p></p>
     </Link>
+    <hr/>
    </div>
   )
 }
