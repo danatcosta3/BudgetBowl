@@ -12,6 +12,7 @@ function MainHeader() {
     localStorage.removeItem("token");
     setLoggedIn(false);
     navigate("/");
+    window.location.reload();
   };
 
   return (

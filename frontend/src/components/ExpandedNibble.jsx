@@ -1,5 +1,6 @@
 import React from "react";
 import { X, Clock, User, Check } from "lucide-react";
+import axios from "axios";
 
 function ExpandedNibble({ nibble, onClose, isModal = true, onSave, onPass }) {
   // Safety check

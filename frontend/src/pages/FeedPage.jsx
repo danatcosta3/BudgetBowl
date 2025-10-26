@@ -1,34 +1,58 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MainHeader from "../components/MainHeader.jsx";
 import MainFooter from "../components/MainFooter";
 import ExpandedNibble from "../components/ExpandedNibble.jsx";
-
+import axios from "axios";
 function FeedPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [savedMeals, setSavedMeals] = useState([]);
+  const [meals, setMeals] = useState([]);
 
-  const meals = [
-    {
-      name: "Chicken tikka",
-      author: "Shrey",
-      time: 15,
-      ingredients: ["Chicken", "yogurt", "spices"],
-      steps: ["marinate chicken", "grill chicken", "serve"],
-      image: "chicken-tikka-masala.jpg",
-    },
-    {
-      name: "Chicken Alfredo",
-      author: "Noah",
-      time: 15,
-      ingredients: ["Pasta", "Chicken", "Oil", "Spices", "sauce"],
-      steps: ["boil pasta", "grill chicken", "add chicken", "add sauce"],
-      image: "ChickenAlfredo.jpg",
-    },
-  ];
+  useEffect(() => {
+    const fetchMeals = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios.get(
+          "http://localhost:5001/api/getmeals",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+          { withCredentials: true }
+        );
+
+        setMeals(response.data.meals);
+      } catch (error) {
+        console.log(`Error: ${error}`);
+      }
+    };
+    fetchMeals();
+  }, []);
 
   // Handle Save (checkmark)
   const handleSave = () => {
-    setSavedMeals([...savedMeals, meals[currentIndex]]);
+    const likeMeal = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios.post(
+          "http://localhost:5001/api/save",
+          {
+            mealId: currentMeal._id,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            withCredentials: true,
+          }
+        );
+        console.log("Saved meal:".response.data);
+      } catch (error) {
+        console.error("Error saving file:", error);
+      }
+    };
+    likeMeal();
     goToNext();
   };
 

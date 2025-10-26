@@ -21,7 +21,7 @@ function NibbleCards({ name, ingredients, time, author, image }) {
         <h3 className="text-lg text-prim-main-blue mb-1">{name}</h3>
         <p className="text-sm text-gray-600 mb-3">by {author}</p>
         <span className="text-sm text-gray-600">
-          {ingredients.length} ingredients
+          {ingredients?.length ?? 0} ingredients
         </span>
       </div>
     </div>
