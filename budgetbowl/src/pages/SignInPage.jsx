@@ -77,7 +77,9 @@ function SignInPage() {
               </p>
             </div>
             <div className="w-[80%] bg-prim-main-blue rounded-md py-5 mt-5 flex items-center justify-center hover:opacity-85">
-              <h2 className="text-xl text-white">Log In!</h2>
+              <Link to="/FeedPage">
+                <h2 className="text-xl text-white">Log In!</h2>
+              </Link>
             </div>
           </form>
         </div>
