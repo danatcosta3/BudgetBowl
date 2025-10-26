@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import MainHeader from "../components/MainHeader.jsx";
 import MainFooter from "../components/MainFooter";
 import ExpandedNibble from "../components/ExpandedNibble.jsx";
 
 function FeedPage() {
-  const users = [
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [savedMeals, setSavedMeals] = useState([]);
+
+  const meals = [
     {
       name: "Chicken tikka",
       author: "Shrey",
@@ -21,26 +24,61 @@ function FeedPage() {
       steps: ["boil pasta", "grill chicken", "add chicken", "add sauce"],
       image: "ChickenAlfredo.jpg",
     },
-    {
-      name: "Chicken Alfredo",
-      author: "Noah",
-      time: 15,
-      ingredients: ["Pasta", "Chicken", "Oil", "Spices", "sauce"],
-      steps: ["boil pasta", "grill chicken", "add chicken", "add sauce"],
-      image: "ChickenAlfredo.jpg",
-    },
   ];
+
+  // Handle Save (checkmark)
+  const handleSave = () => {
+    setSavedMeals([...savedMeals, meals[currentIndex]]);
+    goToNext();
+  };
+
+  // Handle Pass (X)
+  const handlePass = () => {
+    goToNext();
+  };
+
+  // Go to next meal
+  const goToNext = () => {
+    if (currentIndex < meals.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    } else {
+      setCurrentIndex(0);
+    }
+  };
+
+  const currentMeal = meals[currentIndex];
+
   return (
-    <div className="w-full h-screen ">
+    <div className="w-full h-screen flex flex-col bg-gray-50 overflow-hidden">
       <MainHeader />
-      <div className=" bg-blue-500 w-75% h-auto px-56 py-6  border-t border-prim-main-dark text-prim-main-blue">
-        <h1 className="font-mono text-3xl">Live Feed</h1>
+
+      <div className="bg-blue-500 w-full px-56 py-3 border-t border-prim-main-dark text-prim-main-blue flex-shrink-0">
+        <h1 className="font-mono text-2xl">Discover New Meals</h1>
+        <p className="font-mono text-xs mt-1">
+          {currentIndex + 1} of {meals.length} meals
+        </p>
       </div>
-      <div className="px-56 py-6 grid grid-cols-5 gap-x-4">
-        {users.map((user, index) => (
-          <ExpandedNibble key={index} {...user} />
-        ))}
+
+      <div className="flex-1 flex items-center justify-center px-40 py-4 min-h-0">
+        {currentMeal ? (
+          <ExpandedNibble
+            nibble={currentMeal}
+            isModal={false}
+            onSave={handleSave}
+            onPass={handlePass}
+          />
+        ) : (
+          <div className="text-center">
+            <h2 className="text-2xl text-gray-600">
+              No more meals to discover!
+            </h2>
+            <p className="text-gray-500 mt-2">
+              Check back later for new recipes
+            </p>
+          </div>
+        )}
       </div>
+
       <MainFooter />
     </div>
   );
