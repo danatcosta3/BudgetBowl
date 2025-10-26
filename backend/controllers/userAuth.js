@@ -63,3 +63,15 @@ export const login = async (req, res) => {
     res.status(200).json({ message: "Login successful", token });
   } catch (error) {}
 };
+
+export const logout = async (req, res) => {
+  res.clearCookie("token", {
+    sameSite: "strict",
+    secure: process.env.NODE_ENV === "production",
+  });
+  res.status(200).json({ loggedIn: false });
+};
+
+export const check = async (req, res) => {
+  res.status(200).json({ loggedIn: true, user: req.user });
+};

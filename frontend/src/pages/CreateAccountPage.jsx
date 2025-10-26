@@ -27,6 +27,7 @@ function CreateAccountPage() {
       );
       console.log("User created. Server Response:", response.data);
       navigate("/feed");
+      window.location.reload();
     } catch (error) {
       alert(`Could not add user ${email}`);
       console.error("Error creating user:", error.response.data);
