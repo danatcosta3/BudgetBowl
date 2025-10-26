@@ -2,17 +2,31 @@ import React from "react";
 import MainHeader from "../components/MainHeader";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function CreateAccountPage() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Email:", email, "Password:", password);
     try {
-      //TODO
+      const response = await axios.post(
+        "http://localhost:5001/api/register",
+        {
+          email,
+          password,
+          name: `${firstName}, ${lastName}`,
+        },
+        { withCredentials: true }
+      );
+      alert("SUCK MY COCK BITCH");
+      localStorage.setItem("token", response.data.token);
+      console.log("User created. Server Response:", response.data);
     } catch (error) {
       alert(`Could not add user ${email}`);
       console.error("Error creating user:", error.response.data);
@@ -23,7 +37,7 @@ function CreateAccountPage() {
     <div className="h-screen bg-prim-main-blue font-mono">
       <MainHeader />
       <div className="w-full h-[90vh] flex items-center justify-center">
-        <div className="flex flex-col w-[40%] h-[75%] bg-slate-200 rounded-3xl items-center">
+        <div className="flex flex-col w-[40%] h-[85%] bg-slate-200 rounded-3xl items-center">
           <h2 className="text-6xl text-black pt-10">
             Budget<span className="text-prim-main-dark">Bowl</span>
           </h2>
@@ -34,7 +48,34 @@ function CreateAccountPage() {
             className="w-[100%] flex flex-col items-center"
             onSubmit={handleSubmit}
           >
-            <h2 className="text-xl pt-14">Create an account to continue.</h2>
+            <div className="w-[80%]"></div>
+            <h2 className="text-xl pt-2">Create an account to continue.</h2>
+            <div className="w-[80%] flex flex-row justify-between">
+              <div>
+                <div className="flex flex-row justify-start w-[80%]">
+                  <label className="mt-3">First Name:</label>
+                </div>
+                <input
+                  id="fn"
+                  type="text"
+                  placeholder="John..."
+                  className="py-3 px-4 w-[90%] border-2 border-prim-grey-p rounded"
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+              </div>
+              <div>
+                <div className="flex flex-row justify-start w-[80%]">
+                  <label className="mt-3">Last Name:</label>
+                </div>
+                <input
+                  id="ln"
+                  type="text"
+                  placeholder="Doe..."
+                  className="py-3 px-4 w-[90%] border-2 border-prim-grey-p rounded"
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+              </div>
+            </div>
             <div className="flex flex-row justify-start w-[80%]">
               <label htmlFor="email" className="mt-3">
                 Email:
@@ -74,9 +115,12 @@ function CreateAccountPage() {
                 <Link to="/login">Already have an account?</Link>
               </p>
             </div>
-            <div className="w-[80%] bg-prim-main-blue rounded-md py-5 mt-5 flex items-center justify-center hover:opacity-85">
+            <button
+              type="submit"
+              className="w-[80%] bg-prim-main-blue rounded-md py-5 mt-5 flex items-center justify-center hover:opacity-85"
+            >
               <h2 className="text-xl text-white">Create an Account!</h2>
-            </div>
+            </button>
           </form>
         </div>
       </div>

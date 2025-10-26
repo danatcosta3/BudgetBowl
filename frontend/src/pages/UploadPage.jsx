@@ -2,6 +2,7 @@ import React, { use } from "react";
 import MainHeader from "../components/MainHeader";
 import MainFooter from "../components/MainFooter";
 import { useState } from "react";
+import MainFooter from "../components/MainFooter";
 
 export default function UploadPage() {
   const [mealName, setMealName] = useState("");
@@ -10,19 +11,19 @@ export default function UploadPage() {
   const [ingredients, setIngredients] = useState([""]);
   const [steps, setSteps] = useState([""]);
 
- 
   return (
-    <div className="min-h-screen bg-white flex flex-col"> 
+    <div className="min-h-screen bg-white flex flex-col">
       <MainHeader />
       <MainFooter />
       <main className="flex-1 max-w-2xl mx-auto w-full px-6 py-10">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-1">Share a Meal</h2>
+        <h2 className="text-2xl font-semibold text-gray-800 mb-1">
+          Share a Meal
+        </h2>
         <p className="text-sm text-gray-500 mb-6">
           Help fellow students eat well on a budget
         </p>
 
         <div className="bg-white shadow-md rounded-xl border border-gray-200 p-6 space-y-6">
-
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Meal Name
@@ -51,14 +52,14 @@ export default function UploadPage() {
                 Add Photo
               </label>
             </div>
-           {image.map((_, idx) => (
+            {image.map((_, idx) => (
               <input
                 key={idx}
                 type="url"
                 placeholder="Image URL"
                 className="mt-1 mb-2 w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none"
               />
-            ))} 
+            ))}
           </div>
 
           <div>
@@ -69,7 +70,8 @@ export default function UploadPage() {
               <button
                 type="button"
                 onClick={() => setIngredients([...ingredients, ""])}
-                className="text-sm text-teal-700 hover:underline">
+                className="text-sm text-teal-700 hover:underline"
+              >
                 + Add
               </button>
             </div>
@@ -143,6 +145,7 @@ export default function UploadPage() {
           </button>
         </div>
       </main>
+      <MainFooter />
     </div>
   );
 }

@@ -50,7 +50,7 @@ function MainFooter() {
 
         {/* Pantry */}
         <Link
-          to="/pantry"
+          to="/shelf"
           className="flex flex-col items-center gap-1 hover:text-prim-main-dark transition"
         >
           <ListCheck className="w-6 h-6" />
