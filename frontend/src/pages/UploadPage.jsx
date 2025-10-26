@@ -14,7 +14,7 @@ export default function UploadPage() {
     <div className="min-h-screen bg-white flex flex-col">
       <MainHeader />
       <MainFooter />
-      <main className="flex-1 max-w-2xl mx-auto w-full px-6 py-10">
+      <main className="flex-1 max-w-2xl mx-auto w-full px-6 py-10 pb-20">
         <h2 className="text-2xl font-semibold text-gray-800 mb-1">
           Share a Meal
         </h2>
@@ -139,7 +139,7 @@ export default function UploadPage() {
             ))}
           </div>
 
-          <button className="w-full bg-teal-800 text-white py-2.5 rounded-lg font-medium hover:bg-teal-900 transition">
+          <button className="w-full bg-teal-800 text-white py-2.5 pb-4 rounded-lg font-medium hover:bg-teal-900 transition">
             Post Meal
           </button>
         </div>

@@ -52,14 +52,11 @@ function FeedPage() {
     <div className="w-full h-screen flex flex-col bg-gray-50 overflow-hidden">
       <MainHeader />
 
-      <div className="bg-blue-500 w-full px-56 py-3 border-t border-prim-main-dark text-prim-main-blue flex-shrink-0">
+      <div className="w-full px-56 py-8 border-t border-prim-main-dark text-prim-main-blue flex-shrink-0">
         <h1 className="font-mono text-2xl">Discover New Meals</h1>
-        <p className="font-mono text-xs mt-1">
-          {currentIndex + 1} of {meals.length} meals
-        </p>
       </div>
 
-      <div className="flex-1 flex items-center justify-center px-40 py-4 min-h-0">
+      <div className="flex-1 flex items-center justify-center pb-40 px-20 py-4 min-h-0">
         {currentMeal ? (
           <ExpandedNibble
             nibble={currentMeal}
