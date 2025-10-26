@@ -40,10 +40,13 @@ export const login = async (req, res) => {
 
     // Persistent login
     const token = jwt.sign(
-      { id: newUser._id, email: user.email },
+      { id: user._id, email: user.email },
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
     );
     res.status(200).json({ message: "Login successful", token });
-  } catch (error) {}
+  } catch (error) {
+    console.error("Login error:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
 };

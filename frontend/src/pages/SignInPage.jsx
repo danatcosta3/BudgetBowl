@@ -20,7 +20,8 @@ function SignInPage() {
         },
         { withCredentials: true }
       );
-      console.log("User logged in. Server Response:", response.data);
+      console.log("User logged in. Server Response:", response.data.message);
+      localStorage.setItem("token", response.data.token);
       navigate("/feed");
     } catch (error) {
       alert(`Could not log in user ${email}`);
@@ -85,11 +86,12 @@ function SignInPage() {
                 <Link to="/register">Don't have an account?</Link>
               </p>
             </div>
-            <div className="w-[80%] bg-prim-main-blue rounded-md py-5 mt-5 flex items-center justify-center hover:opacity-85">
-              <Link to="/feed">
-                <h2 className="text-xl text-white">Log In!</h2>
-              </Link>
-            </div>
+            <button
+              type="submit"
+              className="w-[80%] bg-prim-main-blue rounded-md py-5 mt-5 flex items-center justify-center hover:opacity-85"
+            >
+              <h2 className="text-xl text-white">Log In!</h2>
+            </button>
           </form>
         </div>
       </div>
