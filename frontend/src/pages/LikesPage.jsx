@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import NibbleCards from "../components/NibbleCards";
+import ExpandedNibble from "../components/ExpandedNibble";
 import MainHeader from "../components/MainHeader";
 import MainFooter from "../components/MainFooter";
 
 function LikesPage() {
+  // State for expanded card
+  const [selectedNibble, setSelectedNibble] = useState(null);
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const users = [
     {
       name: "Chicken tikka",
@@ -30,19 +35,37 @@ function LikesPage() {
       image: "ChickenAlfredo.jpg",
     },
   ];
+
+  const handleCardClick = (nibble) => {
+    setSelectedNibble(nibble);
+    setIsExpanded(true);
+  };
+
+  const handleClose = () => {
+    setIsExpanded(false);
+    setSelectedNibble(null);
+  };
+
   return (
     <div className="">
       <MainHeader />
       <div className="w-full px-56 py-6 text-prim-main-blue">
         <h1 className="font-mono text-3xl">Saved Meals</h1>
-        <h2 className="font-mono pt-5 text-lg">X meals saved</h2>
+        <h2 className="font-mono pt-5 text-lg">{users.length} meals saved</h2>
       </div>
       <div className="px-56 py-6 grid grid-cols-5 gap-x-4">
         {users.map((user, index) => (
-          <NibbleCards key={index} {...user} />
+          <div key={index} onClick={() => handleCardClick(user)}>
+            <NibbleCards {...user} />
+          </div>
         ))}
       </div>
       <MainFooter />
+
+      {/* Expanded Card Modal */}
+      {isExpanded && selectedNibble && (
+        <ExpandedNibble nibble={selectedNibble} onClose={handleClose} />
+      )}
     </div>
   );
 }

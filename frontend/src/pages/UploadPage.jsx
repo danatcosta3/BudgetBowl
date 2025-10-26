@@ -2,7 +2,6 @@ import React, { use } from "react";
 import MainHeader from "../components/MainHeader";
 import MainFooter from "../components/MainFooter";
 import { useState } from "react";
-import MainFooter from "../components/MainFooter";
 
 export default function UploadPage() {
   const [mealName, setMealName] = useState("");
