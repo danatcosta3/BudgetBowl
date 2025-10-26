@@ -8,6 +8,8 @@ import ProfilePage from "./pages/ProfilePage.jsx";
 import ShelfPage from "./pages/ShelfPage.jsx";
 import UploadPage from "./pages/UploadPage.jsx";
 import SignInPage from "./pages/SignInPage.jsx";
+import FeedPage from "./pages/FeedPage.jsx";
+
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +22,7 @@ function App() {
         <Route path="/groceries" element={<GroceryListPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/upload" element={<UploadPage />} />
+        <Route path="/feed" element={<FeedPage />} />
       </Routes>
     </BrowserRouter>
   );
