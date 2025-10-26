@@ -1,5 +1,7 @@
 import React from "react";
 import MainHeader from "../components/MainHeader.jsx";
+import MainFooter from "../components/MainFooter.jsx";
+
 function HomePage() {
   return (
     <div className="flex flex-col">
@@ -27,6 +29,7 @@ function HomePage() {
           />
         </div>
       </div>
+      <MainFooter />
     </div>
   );
 }

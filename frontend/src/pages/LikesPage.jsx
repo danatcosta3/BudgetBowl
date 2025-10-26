@@ -1,6 +1,7 @@
 import React from "react";
 import NibbleCards from "../components/NibbleCards";
 import MainHeader from "../components/MainHeader";
+import MainFooter from "../components/MainFooter";
 
 function LikesPage() {
   const users = [
@@ -41,6 +42,7 @@ function LikesPage() {
           <NibbleCards key={index} {...user} />
         ))}
       </div>
+      <MainFooter />
     </div>
   );
 }
