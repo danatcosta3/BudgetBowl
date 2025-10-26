@@ -73,11 +73,11 @@ function SignInPage() {
                 <p className="ml-2">Show Password</p>
               </div>
               <p className="text-prim-main-squirt underline hover:bg-opacity-85">
-                <Link to="/register">Don'thave an account?</Link>
+                <Link to="/register">Don't have an account?</Link>
               </p>
             </div>
             <div className="w-[80%] bg-prim-main-blue rounded-md py-5 mt-5 flex items-center justify-center hover:opacity-85">
-              <Link to="/FeedPage">
+              <Link to="/UploadPage">
                 <h2 className="text-xl text-white">Log In!</h2>
               </Link>
             </div>
