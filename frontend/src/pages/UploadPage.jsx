@@ -1,5 +1,6 @@
 import React, { use } from "react";
 import MainHeader from "../components/MainHeader";
+import MainFooter from "../components/MainFooter";
 import { useState } from "react";
 import MainFooter from "../components/MainFooter";
 
@@ -7,7 +8,6 @@ export default function UploadPage() {
   const [mealName, setMealName] = useState("");
   const [etaMinutes, setEtaMinutes] = useState("15");
   const [image, setImage] = useState([""]);
-  const Max_Images = 3;
   const [ingredients, setIngredients] = useState([""]);
   const [steps, setSteps] = useState([""]);
   const [touched, setTouched] = useState(false);
@@ -15,6 +15,7 @@ export default function UploadPage() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <MainHeader />
+      <MainFooter />
       <main className="flex-1 max-w-2xl mx-auto w-full px-6 py-10">
         <h2 className="text-2xl font-semibold text-gray-800 mb-1">
           Share a Meal
@@ -75,13 +76,27 @@ export default function UploadPage() {
                 + Add
               </button>
             </div>
-            {ingredients.map((_, idx) => (
-              <input
-                key={idx}
-                type="text"
-                placeholder={`Ingredient ${idx + 1}`}
-                className="mt-1 mb-2 w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none"
-              />
+            {ingredients.map((ingredient, idx) => (
+              <div key={idx} className="flex items-center gap-2 mb-2">
+                <input
+                  type="text"
+                  placeholder={`Ingredient ${idx + 1}`}
+                  className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none"
+                />
+                {ingredients.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const newIngredients = [...ingredients];
+                      newIngredients.splice(idx, 1);
+                      setIngredients(newIngredients);
+                    }}
+                    className="text-red-600 hover:text-red-800 p-2"
+                  >
+                    ×
+                  </button>
+                )}
+              </div>
             ))}
           </div>
 
