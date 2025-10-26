@@ -56,7 +56,7 @@ function FeedPage() {
         <h1 className="font-mono text-2xl">Discover New Meals</h1>
       </div>
 
-      <div className="flex-1 flex items-center justify-center pb-40 px-20 py-4 min-h-0">
+      <div className="flex- flex items-center justify-center pb-40 px-20 py-4 min-h-0">
         {currentMeal ? (
           <ExpandedNibble
             nibble={currentMeal}
