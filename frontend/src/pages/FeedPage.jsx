@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import MainHeader from "../components/MainHeader.jsx";
 import MainFooter from "../components/MainFooter";
-import NibbleCards from "../components/NibbleCards";
 import ExpandedNibble from "../components/ExpandedNibble.jsx";
 
 function FeedPage() {
-  // State for expanded card
-  const [selectedNibble, setSelectedNibble] = useState(null);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [savedMeals, setSavedMeals] = useState([]);
 
-  const users = [
+  const meals = [
     {
       name: "Chicken tikka",
       author: "Shrey",
@@ -26,58 +24,62 @@ function FeedPage() {
       steps: ["boil pasta", "grill chicken", "add chicken", "add sauce"],
       image: "ChickenAlfredo.jpg",
     },
-    {
-      name: "Beef Tacos",
-      author: "Maria",
-      time: 20,
-      ingredients: [
-        "Ground beef",
-        "Taco shells",
-        "Lettuce",
-        "Cheese",
-        "Tomatoes",
-      ],
-      steps: ["cook beef", "warm shells", "assemble tacos", "add toppings"],
-      image: "beef-tacos.jpg",
-    },
   ];
 
-  // Handler to open expanded card
-  const handleCardClick = (nibble) => {
-    setSelectedNibble(nibble);
-    setIsExpanded(true);
+  // Handle Save (checkmark)
+  const handleSave = () => {
+    setSavedMeals([...savedMeals, meals[currentIndex]]);
+    goToNext();
   };
 
-  // Handler to close expanded card
-  const handleClose = () => {
-    setIsExpanded(false);
-    setSelectedNibble(null);
+  // Handle Pass (X)
+  const handlePass = () => {
+    goToNext();
   };
+
+  // Go to next meal
+  const goToNext = () => {
+    if (currentIndex < meals.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    } else {
+      setCurrentIndex(0);
+    }
+  };
+
+  const currentMeal = meals[currentIndex];
 
   return (
-    <div className="w-full min-h-screen flex flex-col">
+    <div className="w-full h-screen flex flex-col bg-gray-50 overflow-hidden">
       <MainHeader />
 
-      <div className="bg-blue-500 w-full h-auto px-56 py-6 border-t border-prim-main-dark text-prim-main-blue">
-        <h1 className="font-mono text-3xl">Discover New Meals</h1>
+      <div className="bg-blue-500 w-full px-56 py-3 border-t border-prim-main-dark text-prim-main-blue flex-shrink-0">
+        <h1 className="font-mono text-2xl">Discover New Meals</h1>
+        <p className="font-mono text-xs mt-1">
+          {currentIndex + 1} of {meals.length} meals
+        </p>
       </div>
 
-      <div className="flex-1 px-56 py-6">
-        <div className="grid grid-cols-5 gap-4">
-          {users.map((user, index) => (
-            <div key={index} onClick={() => handleCardClick(user)}>
-              <NibbleCards {...user} />
-            </div>
-          ))}
-        </div>
+      <div className="flex-1 flex items-center justify-center px-40 py-4 min-h-0">
+        {currentMeal ? (
+          <ExpandedNibble
+            nibble={currentMeal}
+            isModal={false}
+            onSave={handleSave}
+            onPass={handlePass}
+          />
+        ) : (
+          <div className="text-center">
+            <h2 className="text-2xl text-gray-600">
+              No more meals to discover!
+            </h2>
+            <p className="text-gray-500 mt-2">
+              Check back later for new recipes
+            </p>
+          </div>
+        )}
       </div>
 
       <MainFooter />
-
-      {/* Expanded Card Modal */}
-      {isExpanded && selectedNibble && (
-        <ExpandedNibble nibble={selectedNibble} onClose={handleClose} />
-      )}
     </div>
   );
 }
