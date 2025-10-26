@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import Users from "../models/Users";
+import Users from "../models/Users.js";
 
 export const registerUser = async (req, res) => {
   const { email, password, name } = req.body;
@@ -19,7 +19,7 @@ export const registerUser = async (req, res) => {
       { expiresIn: "7d" }
     );
 
-    res.cookie("token", refreshToken, {
+    res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
