@@ -9,7 +9,7 @@ import ShelfPage from "./pages/ShelfPage.jsx";
 import UploadPage from "./pages/UploadPage.jsx";
 import SignInPage from "./pages/SignInPage.jsx";
 import FeedPage from "./pages/FeedPage.jsx";
-
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -17,12 +17,54 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<CreateAccountPage />} />
         <Route path="/login" element={<SignInPage />} />
-        <Route path="/like" element={<LikesPage />} />
-        <Route path="/shelf" element={<ShelfPage />} />
-        <Route path="/groceries" element={<GroceryListPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/upload" element={<UploadPage />} />
-        <Route path="/feed" element={<FeedPage />} />
+        <Route
+          path="/like"
+          element={
+            <ProtectedRoute>
+              <LikesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/shelf"
+          element={
+            <ProtectedRoute>
+              <ShelfPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/groceries"
+          element={
+            <ProtectedRoute>
+              <GroceryListPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <ProfilePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/upload"
+          element={
+            <ProtectedRoute>
+              <UploadPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/feed"
+          element={
+            <ProtectedRoute>
+              <FeedPage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
