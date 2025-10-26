@@ -36,6 +36,7 @@ function ExpandedNibble({ nibble, onClose, isModal = true, onSave, onPass }) {
               src={nibble.image}
               alt={nibble.name}
               className="w-full h-full object-cover"
+              loading="lazy"
             />
             <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-2">
               <Clock className="w-4 h-4 text-prim-main-blue" />
