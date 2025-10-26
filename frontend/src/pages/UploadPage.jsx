@@ -73,15 +73,28 @@ export default function UploadPage() {
                 className="text-sm text-teal-700 hover:underline">
                 + Add
               </button>
-          
             </div>
-            {ingredients.map((_, idx) => (
-              <input
-                key={idx}
-                type="text"
-                placeholder={`Ingredient ${idx + 1}`}
-                className="mt-1 mb-2 w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none"
-              />
+            {ingredients.map((ingredient, idx) => (
+              <div key={idx} className="flex items-center gap-2 mb-2">
+                <input
+                  type="text"
+                  placeholder={`Ingredient ${idx + 1}`}
+                  className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none"
+                />
+                {ingredients.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const newIngredients = [...ingredients];
+                      newIngredients.splice(idx, 1);
+                      setIngredients(newIngredients);
+                    }}
+                    className="text-red-600 hover:text-red-800 p-2"
+                  >
+                    ×
+                  </button>
+                )}
+              </div>
             ))}
           </div>
 
