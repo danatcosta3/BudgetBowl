@@ -21,11 +21,11 @@ function HomePage() {
           </div>
         </div>
         {/* Picture Side */}
-        <div className="w-1/3 h-full bg-prim-main-blue flex items-center justify-center">
+        <div className="w-1/3 h-full bg-prim-main-blue items-start justify-center">
           <img
-            className="max-w-[80%] max-h-[80%] rounded-lg"
-            src="/lasagna.jpg"
-            alt="lasagna"
+            className="max-w-[100%] max-h-[100%] p-10 rounded-2xl mt-8"
+            src="/demo.png"
+            alt="2 meals"
           />
         </div>
       </div>

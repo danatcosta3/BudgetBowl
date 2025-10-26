@@ -21,18 +21,24 @@ function LikesPage() {
     {
       name: "Chicken Alfredo",
       author: "Noah",
-      time: 15,
+      time: 20,
       ingredients: ["Pasta", "Chicken", "Oil", "Spices", "sauce"],
       steps: ["boil pasta", "grill chicken", "add chicken", "add sauce"],
       image: "ChickenAlfredo.jpg",
     },
     {
-      name: "Chicken Alfredo",
-      author: "Noah",
-      time: 15,
-      ingredients: ["Pasta", "Chicken", "Oil", "Spices", "sauce"],
-      steps: ["boil pasta", "grill chicken", "add chicken", "add sauce"],
-      image: "ChickenAlfredo.jpg",
+      name: "Chicken Quesadilla",
+      author: "Dana",
+      time: 10,
+      ingredients: ["Tortilla", "Chicken", "Oil", "Spices", "Cheese"],
+      steps: [
+        "Heat tortilla",
+        "grill chicken",
+        "add chicken",
+        "add cheese",
+        "melt and fold",
+      ],
+      image: "quesadilla.jpg",
     },
   ];
 
@@ -53,7 +59,7 @@ function LikesPage() {
         <h1 className="font-mono text-3xl">Saved Meals</h1>
         <h2 className="font-mono pt-5 text-lg">{users.length} meals saved</h2>
       </div>
-      <div className="px-56 py-6 grid grid-cols-5 gap-x-4">
+      <div className="px-56 blue py-6 grid grid-cols-5 gap-x-4">
         {users.map((user, index) => (
           <div key={index} onClick={() => handleCardClick(user)}>
             <NibbleCards {...user} />
