@@ -1,7 +1,7 @@
 import React from "react";
 import MainHeader from "../components/MainHeader";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function CreateAccountPage() {
@@ -10,6 +10,7 @@ function CreateAccountPage() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,9 +25,8 @@ function CreateAccountPage() {
         },
         { withCredentials: true }
       );
-      alert("SUCK MY COCK BITCH");
-      localStorage.setItem("token", response.data.token);
       console.log("User created. Server Response:", response.data);
+      navigate("/feed");
     } catch (error) {
       alert(`Could not add user ${email}`);
       console.error("Error creating user:", error.response.data);

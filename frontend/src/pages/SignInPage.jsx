@@ -1,20 +1,29 @@
 import React from "react";
 import MainHeader from "../components/MainHeader";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 function SignInPage() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Email:", email, "Password:", password);
     try {
-      //TODO
+      const response = await axios.post(
+        "http://localhost:5001/api/login",
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
+      console.log("User logged in. Server Response:", response.data);
+      navigate("/feed");
     } catch (error) {
-      alert(`Could not add user ${email}`);
+      alert(`Could not log in user ${email}`);
       console.error("Error logging in user:", error.response.data);
     }
   };
