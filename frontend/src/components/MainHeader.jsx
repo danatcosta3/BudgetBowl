@@ -1,23 +1,17 @@
 import { React, useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import axios from "axios";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 function MainHeader() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("token"));
   const location = useLocation();
+  const navigate = useNavigate();
   useEffect(() => {
-    axios
-      .get("http://localhost:5001/api/auth/check", { withCredentials: true })
-      .then((res) => setLoggedIn(res.data.loggedIn))
-      .catch(() => setLoggedIn(false));
+    setLoggedIn(!!localStorage.getItem("token"));
   }, [location.pathname]);
 
-  const handleLogout = async () => {
-    await axios.post(
-      "http://localhost:5001/api/auth/logout",
-      {},
-      { withCredentials: true }
-    );
+  const handleLogout = () => {
+    localStorage.removeItem("token");
     setLoggedIn(false);
+    navigate("/");
   };
 
   return (

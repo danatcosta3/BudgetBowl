@@ -26,8 +26,8 @@ function CreateAccountPage() {
         { withCredentials: true }
       );
       console.log("User created. Server Response:", response.data);
+      localStorage.setItem("token", response.data.token);
       navigate("/feed");
-      window.location.reload();
     } catch (error) {
       alert(`Could not add user ${email}`);
       console.error("Error creating user:", error.response.data);
