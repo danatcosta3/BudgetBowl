@@ -69,20 +69,10 @@ export default function UploadPage() {
               <button
                 type="button"
                 onClick={() => setIngredients([...ingredients, ""])}
-                className="text-sm text-teal-700 hover:underline"
-              >
+                className="text-sm text-teal-700 hover:underline">
                 + Add
               </button>
-              <button>
-                type="button"
-                onClick={() => {
-                  if (ingredients.length > 1) {
-                    setIngredients(ingredients.slice(0, -1));
-                  }
-                  
-                }
-              }
-              </button>
+          
             </div>
             {ingredients.map((_, idx) => (
               <input
