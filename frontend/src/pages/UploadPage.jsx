@@ -1,12 +1,12 @@
 import React, { use } from "react";
 import MainHeader from "../components/MainHeader";
+import MainFooter from "../components/MainFooter";
 import { useState } from "react";
 
 export default function UploadPage() {
   const [mealName, setMealName] = useState("");
   const [etaMinutes, setEtaMinutes] = useState("15");
   const [image, setImage] = useState([""]);
-  const Max_Images = 3;
   const [ingredients, setIngredients] = useState([""]);
   const [steps, setSteps] = useState([""]);
   const [touched, setTouched] = useState(false);
@@ -15,6 +15,7 @@ export default function UploadPage() {
   return (
     <div className="min-h-screen bg-white flex flex-col"> 
       <MainHeader />
+      <MainFooter />
       <main className="flex-1 max-w-2xl mx-auto w-full px-6 py-10">
         <h2 className="text-2xl font-semibold text-gray-800 mb-1">Share a Meal</h2>
         <p className="text-sm text-gray-500 mb-6">
