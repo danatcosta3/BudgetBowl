@@ -9,7 +9,6 @@ export default function UploadPage() {
   const [image, setImage] = useState([""]);
   const [ingredients, setIngredients] = useState([""]);
   const [steps, setSteps] = useState([""]);
-  const [touched, setTouched] = useState(false);
 
  
   return (
@@ -111,15 +110,30 @@ export default function UploadPage() {
                 + Add Step
               </button>
             </div>
-            {steps.map((_, idx) => (
+            {steps.map((step, idx) => (
               <div key={idx} className="flex items-start gap-3 mb-3">
                 <div className="h-6 w-6 bg-teal-700 text-white rounded-full text-xs flex items-center justify-center">
                   {idx + 1}
                 </div>
-                <textarea
-                  placeholder={`Step ${idx + 1}`}
-                  className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none"
-                ></textarea>
+                <div className="flex-1 flex gap-2">
+                  <textarea
+                    placeholder={`Step ${idx + 1}`}
+                    className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none"
+                  ></textarea>
+                  {steps.length > 1 && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const newSteps = [...steps];
+                        newSteps.splice(idx, 1);
+                        setSteps(newSteps);
+                      }}
+                      className="text-red-600 hover:text-red-800 p-2"
+                    >
+                      ×
+                    </button>
+                  )}
+                </div>
               </div>
             ))}
           </div>
